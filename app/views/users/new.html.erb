@@ -1,7 +1,9 @@
 <%= form_for @user do |f| %>
   <%= f.label :username, "Create your Username: " %>
   <%= f.text_field :username %>
+  
   <%= f.label :password, "Create your password: " %>
   <%= f.password_field :password %>
+
   <%= f.submit "Create Account" %>
 <% end %>
