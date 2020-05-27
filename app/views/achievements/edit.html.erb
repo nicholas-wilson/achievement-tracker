@@ -1,0 +1,18 @@
+<h1>Editing the "<%= @achievement.title%>" Achievement</h1>
+
+<%= form_for @achievement do |f| %>
+  <%= f.label :title, "What is the title for this achievement?" %>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.label :description, "What must you do to complete this achievement?" %>
+  <br>
+  <%= f.text_area :description %>
+  <br>
+  <br>
+  <%= f.label :value, "How many points is this achievement worth?" %>
+  <%= f.number_field :value %>
+  <br>
+  <br>
+  <%= f.submit "Update Achievement" %>
+<% end %>

@@ -27,7 +27,15 @@ class AchievementsController < ApplicationController
 
   def edit
     @achievement = current_achievement
+    @user = current_user
     redirect_if_not_belonging_to_current_user(@achievement)
+  end
+
+  def  update
+    # add validations
+    achievement = current_achievement
+    achievement.update(achievement_params)
+    redirect_to acvhievement_path(achievement)
   end
 
   def destroy
