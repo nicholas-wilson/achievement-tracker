@@ -21,7 +21,7 @@ class AchievementsController < ApplicationController
   end
 
   def show
-
+    @achievement = Achievement.find_by(id: params[:id])
   end
 
   def edit
