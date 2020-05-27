@@ -1,0 +1,14 @@
+<h1>Create an Achievement</h1>
+
+<%= form_for @achievement do |f| %>
+  <%= f.label :title, "What is the title for this achievement?" %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description, "What must you do to complete this achievement?" %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :value, "How many points is this achievement worth?" %>
+  <%= f.number_field :value %>
+  <br>
+  <%= f.sumbit "Create Achievement" %>
+<% end %>
