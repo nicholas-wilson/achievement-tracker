@@ -1,9 +1,11 @@
+<h1>To look at your Goals/Achievements, please login below.</h1>
 <%= form_tag '/login', method: "post" do %>
   <%= label_tag :username, "Enter your Username: " %>
   <%= text_field_tag :username %>
   <br>
-  <%= label_tag :password, "Enter your password: " %>
-  <%= password_field_tag :password %>
   <br>
+  <%= label_tag :password, "Enter your Password: " %>
+  <%= password_field_tag :password %>
+  <br><br>
   <%= submit_tag "Login" %>
 <% end %>
