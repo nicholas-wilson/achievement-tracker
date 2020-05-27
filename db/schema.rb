@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_223933) do
     t.string "description"
     t.integer "value"
     t.boolean "completed"
+    t.integer "user_id"
+    t.integer "goal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "goals", force: :cascade do |t|
     t.string "category"
-    t.integer "user_id"
-    t.integer "achievement_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223933) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.string "achievement_score"
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

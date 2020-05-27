@@ -1,4 +1,4 @@
 class Achievement < ApplicationRecord
-  has_many :goals
-  has_many :users, through: :goals
+  belongs_to :goal
+  belongs_to :user
 end
