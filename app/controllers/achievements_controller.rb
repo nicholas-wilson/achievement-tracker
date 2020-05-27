@@ -21,11 +21,13 @@ class AchievementsController < ApplicationController
   end
 
   def show
-    @achievement = Achievement.find_by(id: params[:id])
+    @achievement = current_achievement
+    redirect_if_not_belonging_to_current_user(@achievement)
   end
 
   def edit
-
+    @achievement = current_achievement
+    redirect_if_not_belonging_to_current_user(@achievement)
   end
 
   def destroy
@@ -37,9 +39,20 @@ class AchievementsController < ApplicationController
   def achievement_params
     params.require(:achievement).permit(:title, :description, :value, :completed)
   end
+
   def redirect_if_not_logged_in
     if !current_user
       redirect_to '/login'
+    end
+  end
+
+  def current_achievement
+    Achievement.find_by(id: params[:id])
+  end
+
+  def redirect_if_not_belonging_to_current_user(achievement)
+    if current_user.id != achievement.user_id
+      redirect_to user_path(current_user) # We want to redirect users to their achievements index page once it's in the code.
     end
   end
 
