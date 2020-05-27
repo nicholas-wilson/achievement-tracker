@@ -51,12 +51,6 @@ class AchievementsController < ApplicationController
     params.require(:achievement).permit(:title, :description, :value, :completed)
   end
 
-  def redirect_if_not_logged_in
-    if !current_user
-      redirect_to '/login'
-    end
-  end
-
   def current_achievement
     Achievement.find_by(id: params[:id])
   end
