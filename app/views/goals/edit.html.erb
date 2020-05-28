@@ -1,0 +1,9 @@
+<h1>The current goal is : <%= @goal.category %></h1>
+<%= form_for @goal do |f| %>
+  <%= f.label :category, "What should the goal be for instead?" %>
+  <br>
+  <%= f.text_field :category %>
+  <br>
+  <br>
+  <%= f.submit "Update Goal" %>
+<% end %>
