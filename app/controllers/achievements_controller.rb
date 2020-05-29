@@ -13,14 +13,14 @@ class AchievementsController < ApplicationController
 
   def create
     # validations to be made at a later time <------- don't forget
-    achievement = Achievement.create(achievement_params)
-    achievement.user_id = current_user.id
+    @achievement = Achievement.new(achievement_params)
     
-    if achievement.save
-      redirect_to achievement_path(achievement)
+    if @achievement.valid?
+      @achievement.save
+      redirect_to achievement_path(@achievement)
     else
       # Tell the user the problem with the data they gave you.
-      redirect_to new_achievement_path
+      render :new
     end
   end
 

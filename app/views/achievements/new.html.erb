@@ -1,5 +1,5 @@
 <h1>Create an Achievement</h1>
-
+<%= render 'shared/form_errors', object: @achievement %>
 <%= form_for @achievement do |f| %>
   <%= f.label :title, "What is the title for this achievement?" %>
   <%= f.text_field :title %>
