@@ -21,18 +21,6 @@ class GoalsController < ApplicationController
     @goal = Goal.find_by(id: params[:id])
   end
 
-  def edit
-    # don't let them edit the goal if it's not connected to them.
-    @goal = Goal.find_by(id: params[:id])
-  end
-
-  def update
-
-  end
-
-  def destroy
-
-  end
 
   private
 
