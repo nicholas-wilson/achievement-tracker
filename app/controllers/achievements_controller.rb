@@ -8,6 +8,7 @@ class AchievementsController < ApplicationController
   def new
     redirect_if_not_logged_in
     @achievement = Achievement.new
+    @user_id = current_user.id
   end
 
   def create
@@ -48,7 +49,7 @@ class AchievementsController < ApplicationController
   private
 
   def achievement_params
-    params.require(:achievement).permit(:title, :description, :value, :completed)
+    params.require(:achievement).permit(:title, :description, :value, :completed, :user_id, :goal_id)
   end
 
   def current_achievement

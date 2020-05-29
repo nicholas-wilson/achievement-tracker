@@ -14,5 +14,9 @@
   <%= f.number_field :value %>
   <br>
   <br>
+  <%= f.label :goal_id, "What goal does this work towards?" %>
+  <%= f.collection_select  :goal_id, Goal.all, :id, :category %>
+  <%= f.hidden_field :user_id, value: @user_id %>
+  <br>
   <%= f.submit "Create Achievement" %>
 <% end %>
