@@ -12,7 +12,7 @@ class AchievementsController < ApplicationController
 
   def create
     # validations to be made at a later time <------- don't forget
-    achievement = Achievement.new(achievement_params)
+    achievement = Achievement.create(achievement_params)
     achievement.user_id = current_user.id
     
     if achievement.save
@@ -56,7 +56,7 @@ class AchievementsController < ApplicationController
   end
 
   def redirect_if_not_belonging_to_current_user(achievement)
-    if current_user.id != achievement.user_id
+    if !achievement || current_user.id != achievement.user_id
       redirect_to user_path(current_user) # We want to redirect users to their achievements index page once it's in the code.
     end
   end

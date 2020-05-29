@@ -16,7 +16,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  def show
+  def show      # if I want to keep this I should display the type of achievements people are setting.
     redirect_if_not_logged_in
     @goal = Goal.find_by(id: params[:id])
   end
