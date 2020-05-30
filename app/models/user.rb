@@ -13,6 +13,10 @@ class User < ApplicationRecord
     score
   end
 
+  def unique_goals
+    self.goals.pluck(:category).uniq
+  end
+
   def facebook_account?
     if self.uid.nil?
       false

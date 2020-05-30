@@ -1,2 +1,15 @@
-<h1>Welcome to <%= @user.username %>'s show page!</h1>
-<p>Here will be the user's achievement score and list of completed goals.</p>
+<h1>Welcome back <%= @user.username %>!</h1>
+<h3>Right now you have an achievement score of <%= @user.achievement_score %></h3>
+<p>Your current goals are :</p>
+<ul>
+  <% @user.unique_goals.each do |goal| %>
+    <li><%= goal %></li>
+  <% end %>
+</ul>
+<br>
+<p>Below are some links to do the following:</p>
+<ul>
+  <li><%= link_to "create a goal", new_goal_path %></li>
+  <li><%= link_to "create a new achievement", new_achievement_path %></li>
+  <li><%= link_to "view your achievements", user_achievements_path(@user) %></li>
+</ul>
