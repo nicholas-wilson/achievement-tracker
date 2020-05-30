@@ -9,10 +9,12 @@ class GoalsController < ApplicationController
   end
 
   def create
-    if goal = Goal.create(goal_params)
+    @goal = Goal.new(goal_params)
+    if @goal.valid?
+      @goal.save
       redirect_to goal_path(goal)
     else
-      redirect_to new_goal_path # don't forget to add errors
+      render :new
     end
   end
 

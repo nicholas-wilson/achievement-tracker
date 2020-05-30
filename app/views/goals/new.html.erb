@@ -1,5 +1,6 @@
 <h1>Create a Goal!</h1>
 <p>Your goal will act like the category for achievements to fall under.</p>
+<%= render "shared/form_errors", object: @goal%>
 <%= form_for @goal do |f| %>
   <%= f.label :category, "What is the goal you want to accomplish?" %>
   <br>
