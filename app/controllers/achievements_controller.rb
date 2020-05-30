@@ -8,7 +8,7 @@ class AchievementsController < ApplicationController
   def new
     redirect_if_not_logged_in
     @achievement = Achievement.new
-    @user_id = current_user.id
+    @achievement.user_id = current_user.id
   end
 
   def create
@@ -20,6 +20,7 @@ class AchievementsController < ApplicationController
       redirect_to achievement_path(@achievement)
     else
       # Tell the user the problem with the data they gave you.
+
       render :new
     end
   end
