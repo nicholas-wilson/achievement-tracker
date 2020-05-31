@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    if current_user.id == session[:user_id]
+      @user = current_user
+    else
+      redirect_to '/'
+    end
   end
 
   private
