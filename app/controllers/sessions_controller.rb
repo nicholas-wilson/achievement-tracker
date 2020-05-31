@@ -14,8 +14,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:username])
-    authenticated = user.try(:authenticate, params[:password])
+    if facebook_login?(auth_params)
+      user = User.find_or_create_by(uid: auth_params['uid'])
+    else
+      user = User.find_by(username: params[:username])
+      authenticated = user.try(:authenticate, params[:password])
+    end
     if authenticated
       session[:user_id] = user.id
       redirect_to user_path(user)
@@ -28,5 +32,19 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to '/login'
+  end
+
+  private
+
+  def facebook_login?(params)
+    if params # uid param
+      true
+    else
+      false
+    end
+  end
+
+  def auth_params
+    request.env['omniauth.auth'] ||= nil
   end
 end
