@@ -21,7 +21,8 @@ class User < ApplicationRecord
     user = User.find_by(uid: params["uid"])
     if !user
       user = User.new
-      user.facebook_name = params["name"]
+      user.uid = params["uid"]
+      user.facebook_name = params['info']["name"]
       user.password = "fake"
       user.save
     end

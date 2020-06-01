@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   def create
     if facebook_login?(auth_params)
       user = User.find_or_create_facebook_account(auth_params)
+      binding.pry
       authenticated = true
     else
       user = User.find_by(username: params[:username])
@@ -32,7 +33,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to '/login'
+    redirect_to '/'
   end
 
   private
