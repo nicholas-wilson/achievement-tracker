@@ -14,5 +14,15 @@
   <%= f.number_field :value %>
   <br>
   <br>
+  <%= f.label :completed, "Is this completed?" %>
+  <%= f.check_box :completed %>
+  <br>
+  <br>
+  <%= f.label :goal_id, "What goal does this work towards?" %>
+  <%= f.collection_select  :goal_id, Goal.all, :id, :category %>
+  <br>
+  <br>
   <%= f.submit "Update Achievement" %>
 <% end %>
+<br>
+<p><%= link_to "Back to Achievements", user_achievements_path(@user) %> - <%= link_to "Back to Home Page", user_path(@user) %></p>

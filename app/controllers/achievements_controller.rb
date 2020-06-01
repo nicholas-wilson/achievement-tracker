@@ -42,7 +42,7 @@ class AchievementsController < ApplicationController
     # add validations
     achievement = current_achievement
     achievement.update(achievement_params)
-    redirect_to user_acvhievement_path(achievement, current_user)
+    redirect_to user_achievement_path(current_user, achievement)
   end
 
   private

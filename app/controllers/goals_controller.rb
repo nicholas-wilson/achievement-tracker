@@ -6,6 +6,7 @@ class GoalsController < ApplicationController
   def new
     redirect_if_not_logged_in
     @goal = Goal.new
+    @user = current_user
   end
 
   def create
