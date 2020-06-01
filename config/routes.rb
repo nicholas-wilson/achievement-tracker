@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   resources :users, only: [:new, :create, :show] do
-    resources :achievements, only: [:index, :show]
+    resources :achievements, only: [:index, :show, :new]
   end
-  resources :achievements, only: [:new, :create, :edit, :destroy]
-  resources :goals, only: [:new, :create, :show, :index]
+  resources :achievements, only: [ :create, :edit, :update, :destroy]
+  resources :goals, only: [:new, :create]
 end

@@ -6,4 +6,12 @@ module ApplicationHelper
       user.username
     end
   end
+
+  def achievement_status(achievement)
+    if achievement.completed
+      "Completed - "
+    else
+      "In Progress - "
+    end
+  end
 end

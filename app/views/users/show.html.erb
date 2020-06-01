@@ -10,6 +10,6 @@
 <p>Below are some links to do the following:</p>
 <ul>
   <li><%= link_to "create a goal", new_goal_path %></li>
-  <li><%= link_to "create a new achievement", new_achievement_path %></li>
+  <li><%= link_to "create a new achievement", new_user_achievement_path(@user) %></li>
   <li><%= link_to "view your achievements", user_achievements_path(@user) %></li>
 </ul>

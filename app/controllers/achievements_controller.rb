@@ -1,8 +1,8 @@
 class AchievementsController < ApplicationController
 
   def index
-    # Only nested route for users/:id/achievements
-    # To be implemented
+    @user = current_user
+    @achievements = @user.achievements
   end
 
   def new
@@ -12,7 +12,6 @@ class AchievementsController < ApplicationController
   end
 
   def create
-    # validations to be made at a later time <------- don't forget
     @achievement = Achievement.new(achievement_params)
     
     if @achievement.valid?
@@ -40,7 +39,7 @@ class AchievementsController < ApplicationController
     # add validations
     achievement = current_achievement
     achievement.update(achievement_params)
-    redirect_to acvhievement_path(achievement)
+    redirect_to user_acvhievement_path(achievement, current_user)
   end
 
   def destroy
