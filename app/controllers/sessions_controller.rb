@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
   private
 
   def facebook_login?(params)
-    if params['uid'] # uid param
+    if params
       true
     else
       false

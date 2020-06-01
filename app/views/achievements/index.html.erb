@@ -1,7 +1,7 @@
 <h1><%= user_name(@user) %>'s achievements</h1>
 <ul>
   <% @achievements.each do |achievement| %>
-    <li><%= achievement_status(achievement) %><%= achievement.title %> - <%= achievement.description %> <%= link_to "Edit this achievement", edit_achievement_path(achievement) %></li>
+    <li><%= achievement_status(achievement) %>(<%= achievement.value %>) <%= achievement.title %> - <%= achievement.description %> <%= link_to "Edit this achievement", edit_achievement_path(achievement) %></li>
   <% end %>
 </ul>
 <p><%= link_to "Back to Home Page", user_path(@user) %></p>

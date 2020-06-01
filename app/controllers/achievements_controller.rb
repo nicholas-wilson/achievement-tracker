@@ -15,10 +15,9 @@ class AchievementsController < ApplicationController
 
   def create
     @achievement = Achievement.new(achievement_params)
-    
     if @achievement.valid?
       @achievement.save
-      redirect_to achievement_path(@achievement)
+      redirect_to user_achievement_path(current_user, @achievement)
     else
       # Tell the user the problem with the data they gave you.
 
