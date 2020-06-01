@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_223933) do
+ActiveRecord::Schema.define(version: 2020_06_01_000737) do
 
   create_table "achievements", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223933) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "facebook_name"
   end
 
 end
