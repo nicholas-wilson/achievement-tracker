@@ -17,6 +17,17 @@ class User < ApplicationRecord
     self.goals.pluck(:category).uniq
   end
 
+  def find_or_create_facebook_account(params)
+    user = User.find_by(uid: params["uid"])
+    if !user
+      user = User.new
+      user.facebook_name = params["name"]
+      user.password = "fake"
+      user.save
+    end
+    user
+  end
+
   def facebook_account?
     if self.uid.nil?
       false
