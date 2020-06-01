@@ -4,3 +4,5 @@
 <% if @user %>
   <%= link_to "Edit this achievement", edit_achievement_path(@achievement) %>
 <% end %>
+<br>
+<p><%= link_to "Back to Achievements", user_achievements_path(@user) %> - <%= link_to "Back to Home Page", user_path(@user) %></p>

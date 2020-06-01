@@ -8,7 +8,9 @@ class AchievementsController < ApplicationController
   def new
     redirect_if_not_logged_in
     @achievement = Achievement.new
-    @achievement.user_id = current_user.id
+    @user = current_user
+    @achievement.user_id = @user.id
+    
   end
 
   def create
@@ -26,6 +28,7 @@ class AchievementsController < ApplicationController
 
   def show
     @achievement = current_achievement
+    @user = current_user
     redirect_if_not_belonging_to_current_user(@achievement)
   end
 
@@ -40,10 +43,6 @@ class AchievementsController < ApplicationController
     achievement = current_achievement
     achievement.update(achievement_params)
     redirect_to user_acvhievement_path(achievement, current_user)
-  end
-
-  def destroy
-    
   end
 
   private

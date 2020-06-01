@@ -12,17 +12,11 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     if @goal.valid?
       @goal.save
-      redirect_to goal_path(goal)
+      redirect_to user_path(current_user)
     else
       render :new
     end
   end
-
-  def show      # if I want to keep this I should display the type of achievements people are setting.
-    redirect_if_not_logged_in
-    @goal = Goal.find_by(id: params[:id])
-  end
-
 
   private
 
