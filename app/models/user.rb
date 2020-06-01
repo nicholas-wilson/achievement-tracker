@@ -17,7 +17,7 @@ class User < ApplicationRecord
     self.goals.pluck(:category).uniq
   end
 
-  def find_or_create_facebook_account(params)
+  def self.find_or_create_facebook_account(params)
     user = User.find_by(uid: params["uid"])
     if !user
       user = User.new
