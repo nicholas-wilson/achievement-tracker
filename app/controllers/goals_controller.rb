@@ -12,9 +12,11 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     if @goal.valid?
+      # binding.pry
       @goal.save
       redirect_to user_path(current_user)
     else
+      @user = current_user
       render :new
     end
   end

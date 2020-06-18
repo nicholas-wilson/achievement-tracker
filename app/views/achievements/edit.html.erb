@@ -1,5 +1,5 @@
 <h1>Editing the "<%= @achievement.title%>" Achievement</h1>
-
+<!-- TODO should render form errors here too maybe -->
 <%= form_for @achievement do |f| %>
   <%= f.label :title, "What is the title for this achievement?" %>
   <%= f.text_field :title %>

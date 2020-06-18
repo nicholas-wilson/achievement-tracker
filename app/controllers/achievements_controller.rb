@@ -1,5 +1,5 @@
 class AchievementsController < ApplicationController
-
+  # TODO before_action: [:index, :new] reduce duplicate code in all controllers
   def index
     @user = current_user
     @achievements = @user.achievements
@@ -15,12 +15,11 @@ class AchievementsController < ApplicationController
 
   def create
     @achievement = Achievement.new(achievement_params)
-    if @achievement.valid?
-      @achievement.save
+    if @achievement.save
       redirect_to user_achievement_path(current_user, @achievement)
     else
       # Tell the user the problem with the data they gave you.
-
+      @user = current_user
       render :new
     end
   end
@@ -38,7 +37,7 @@ class AchievementsController < ApplicationController
   end
 
   def  update
-    # add validations
+    # TODO add validations
     achievement = current_achievement
     achievement.update(achievement_params)
     redirect_to user_achievement_path(current_user, achievement)
@@ -51,7 +50,7 @@ class AchievementsController < ApplicationController
   end
 
   def current_achievement
-    Achievement.find_by(id: params[:id])
+    @achievement = Achievement.find_by(id: params[:id])
   end
 
   def redirect_if_not_belonging_to_current_user(achievement)
