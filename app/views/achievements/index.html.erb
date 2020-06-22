@@ -1,4 +1,9 @@
 <h1><%= user_name(@user) %>'s achievements</h1>
+<% flash.each do |type, msg| %>
+<div>
+  <%= msg %>
+</div>
+<% end %>
 <ul>
   <% @achievements.each do |achievement| %>
     <li><%= achievement_status(achievement) %>(<%= achievement.value %>) <%= achievement.title %> - <%= achievement.description %> <%= link_to "Edit this achievement", edit_achievement_path(achievement) %></li>

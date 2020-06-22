@@ -1,4 +1,9 @@
 <h1>Welcome to Achievement Tracker, please sign up below :)</h1>
+<% flash.each do |type, msg| %>
+<div>
+  <%= msg %>
+</div>
+<% end %>
 <%= form_for @user do |f| %>
   <%= f.label :username, "Create your Username: " %>
   <%= f.text_field :username %>

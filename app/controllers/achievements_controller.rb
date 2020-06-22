@@ -49,6 +49,7 @@ class AchievementsController < ApplicationController
 
   def redirect_if_not_belonging_to_current_user(achievement)
     if !achievement || current_user.id != achievement.user_id
+      flash.alert = "You can't edit an achievement that isn't yours, so we'll take you to your list of achievements."
       redirect_to user_achievements_path(current_user) # We want to redirect users to their achievements index page once it's in the code.
     end
   end
