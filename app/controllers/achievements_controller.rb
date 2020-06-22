@@ -17,7 +17,6 @@ class AchievementsController < ApplicationController
     if @achievement.save
       redirect_to user_achievement_path(@user, @achievement)
     else
-      # Tell the user the problem with the data they gave you.
       render :new
     end
   end
@@ -31,9 +30,11 @@ class AchievementsController < ApplicationController
   end
 
   def  update
-    # TODO add validations
-    @achievement.update(achievement_params)
-    redirect_to user_achievement_path(@user, @achievement)
+    if @achievement.update(achievement_params)
+      redirect_to user_achievement_path(@user, @achievement)
+    else
+      render :edit
+    end
   end
 
   private
