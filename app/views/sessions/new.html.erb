@@ -1,4 +1,9 @@
 <h1>To look at your Goals/Achievements, please login below.</h1>
+<% flash.each do |type, msg| %>
+<div>
+  <%= msg %>
+</div>
+<% end %>
 <%= form_tag '/login', method: "post" do %>
   <%= label_tag :username, "Enter your Username: " %>
   <%= text_field_tag :username %>

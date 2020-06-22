@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def index
+  def index # home page
     if current_user
       redirect_to user_path(current_user)
     end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      # Show validation errors here and redirect to login page
+      flash.alert = "Wrong username/password combination, make sure not to leave either field blank."
       redirect_to "/login"
     end
   end

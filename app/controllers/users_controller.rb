@@ -21,9 +21,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user.id == session[:user_id]
+    if current_user && current_user.id == session[:user_id]
       @user = current_user
     else
+      flash.alert = "The page you tried to go to wasn't yours, so you were redirected."
       redirect_to '/'
     end
   end
