@@ -49,7 +49,7 @@ class AchievementsController < ApplicationController
 
   def redirect_if_not_belonging_to_current_user(achievement)
     if !achievement || current_user.id != achievement.user_id
-      redirect_to user_path(current_user) # We want to redirect users to their achievements index page once it's in the code.
+      redirect_to user_achievements_path(current_user) # We want to redirect users to their achievements index page once it's in the code.
     end
   end
 end
