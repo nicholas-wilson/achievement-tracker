@@ -5,4 +5,5 @@ class Achievement < ApplicationRecord
   validates :description, presence: true
   validates :value, format: { with: /[0-9]/, message: " must be a number"}
   scope :completed, -> { where(completed: true)} # make sure to use this to sort by completed
+  scope :in_progress, -> { where(completed: false)}
 end

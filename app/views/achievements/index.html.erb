@@ -4,8 +4,15 @@
   <%= msg %>
 </div>
 <% end %>
+<h3>Completed Achievements</h3>
 <ul>
-  <% @achievements.each do |achievement| %>
+  <% @finished_achievements.each do |achievement| %>
+    <li><%= achievement_status(achievement) %>(<%= achievement.value %>) <%= achievement.title %> - <%= achievement.description %> <%= link_to "Edit this achievement", edit_achievement_path(achievement) %></li>
+  <% end %>
+</ul>
+<h3>Achievements In-Progress</h3>
+<ul>
+  <% @in_progress_achievements.each do |achievement| %>
     <li><%= achievement_status(achievement) %>(<%= achievement.value %>) <%= achievement.title %> - <%= achievement.description %> <%= link_to "Edit this achievement", edit_achievement_path(achievement) %></li>
   <% end %>
 </ul>

@@ -3,7 +3,9 @@ class AchievementsController < ApplicationController
   before_action :current_achievement, only: [:show, :edit, :update]
   
   def index
-    @achievements = @user.achievements
+    achievements = @user.achievements
+    @finished_achievements = achievements.completed
+    @in_progress_achievements = achievements.in_progress
   end
 
   def new
